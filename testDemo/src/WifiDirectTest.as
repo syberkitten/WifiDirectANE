@@ -60,7 +60,7 @@ package
 		{
 			super();
 			
-			// 支持 autoOrient
+			// Support autoOrient
 			stage.align = StageAlign.TOP_LEFT;
 			stage.scaleMode = StageScaleMode.NO_SCALE;
 			initUI();
@@ -134,7 +134,7 @@ package
 		
 		protected function onFetchRes(event:WifiDirectFetchOthersEvent):void
 		{
-			show("开始搜索 = "+event.responds.toString());
+			show ("Start search =" + event.responds.toString ());
 		}
 		
 		protected function onStateChange(event:WifiDirectP2pStateChangeEvent):void
@@ -144,15 +144,15 @@ package
 		
 		private function initUI():void
 		{
-			initBtn(b1,"初始化",0,0,b1C);
-			initBtn(b2,"搜索",416,0,b2C);
-			initBtn(b3,"建组",0,120,b3C);
-			initBtn(b4,"解组",416,120,b4C);
-			initBtn(b5,"连接",0,250,b5C);
-			initBtn(b6,"断开",416,250,b6C);
-			initBtn(b7,"服务器",0,950,b7C);
-			initBtn(b8,"客户端",416,950,b8C);
-			initBtn(b9,"发送",250,1179,b9C);
+			initBtn (b1, "initialization", 0,0, b1C);
+			initBtn (b2, "search", 416,0, b2C);
+			initBtn (b3, "team-building", 0,120, b3C);
+			initBtn (b4, "Solutions Group", 416,120, b4C);
+			initBtn (b5, "connection", 0,250, b5C);
+			initBtn (b6, "disconnect", 416,250, b6C);
+			initBtn (b7, "server", 0,950, b7C);
+			initBtn (b8, "client", 416,950, b8C);
+			initBtn (b9, "send", 250,1179, b9C);
 			var format:TextFormat=new TextFormat(null,30);
 			
 			t2=new TextArea();
@@ -166,9 +166,9 @@ package
 			if(ServerSocket.isSupported)
 			{
 				
-				//show("支持ServiceSocket服务器");
-			}else{
-				//show("该设备不支持ServerSocket");
+				// Show ("Support ServiceSocket server");
+			} else {
+			// Show ("The device does not support ServerSocket");
 			}
 			
 		}
@@ -195,7 +195,7 @@ package
 			clientSocket.addEventListener(ProgressEvent.SOCKET_DATA,onServerData);
 			clientSocket.connect(ownerAdress,port);
 			isServer=false;
-			show("创建客户端并连接到 "+ownerAdress);
+			show ("create client and connect to the" + ownerAdress);
 			
 		}
 		
@@ -206,7 +206,7 @@ package
 		
 		protected function onServerConnected(event:Event):void
 		{
-			show("连接到服务器成功");
+			show ("connect to the server successfully");
 			clientSocket.writeUTFBytes("Hello i am Client");
 			clientSocket.flush();
 		}
@@ -223,9 +223,9 @@ package
 				serverSocket.addEventListener(ServerSocketConnectEvent.CONNECT,onClientConnect);
 				serverSocket.listen();
 				isServer=true;
-				show("创建服务器");
+				show ("create server");	
 			}else{
-				show("该设备不支持ServerSocket");
+				show ("The device does not support ServerSocket");
 			}
 		}
 		
@@ -234,13 +234,13 @@ package
 			var socket:Socket=event.socket;
 			client=socket;
 			socket.addEventListener(ProgressEvent.SOCKET_DATA,onClientData);
-			show("发现客户端连接请求");
+			show ("find client connection request ');
 			
 		}
 		
 		protected function onClientData(event:ProgressEvent):void
 		{
-			show("收到客户端消息 ");
+			show ("receiving the client message");
 			var socket:Socket=event.target as Socket;
 			show(socket.readUTFBytes(event.bytesLoaded));
 		}
@@ -295,3 +295,4 @@ package
 		}
 	}
 }
+
